@@ -2,6 +2,9 @@
 
 Appcent Weather uygulaması, mülakat aşaması için tasarlanmıştır.
 
+`Not: Ekstradan App Widget'ta eklendi`
+
+
 ## Kullanılan Api
 
 -  https://www.metaweather.com/api/
@@ -19,3 +22,9 @@ Appcent Weather uygulaması, mülakat aşaması için tasarlanmıştır.
 -   [WindView](https://github.com/AhmadNemati/WindView)
 
 `Not: WindView kütüphanesi projeye import edilerek gereksinimlerim doğrultusunda düzenlenmiştir.`
+
+# Screenshot
+![](https://github.com/ahmetgezici/AppcentWeather/blob/master/Screenshots/appcent1.png) ![](https://github.com/ahmetgezici/AppcentWeather/blob/master/Screenshots/appcent2.png) ![](https://github.com/ahmetgezici/AppcentWeather/blob/master/Screenshots/appcent3.png)
+
+# Widgetlar
+![](https://github.com/ahmetgezici/AppcentWeather/blob/master/Screenshots/widget1.png) ![](https://github.com/ahmetgezici/AppcentWeather/blob/master/Screenshots/widget2.png)
