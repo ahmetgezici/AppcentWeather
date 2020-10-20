@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:padding="@dimen/widget_margin">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="2dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/solis_regular"
+                android:text="--°"
+                android:textAlignment="center"
+                android:textColor="#ECECEC"
+                android:textSize="110sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-25dp"
+                android:layout_marginTop="27dp"
+                android:fontFamily="@font/solis_regular"
+                android:text="C"
+                android:textAlignment="center"
+                android:textColor="#A1A1A1"
+                android:textSize="35sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/weatherStateImg"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:adjustViewBounds="true" />
+
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/solis_bold"
+            android:text="-----"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#ECECEC"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

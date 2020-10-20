@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#061729"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".View.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/progressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#252330"
+        android:translationZ="10dp"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#061729"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".View.MainActivity">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="#0c294b"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/appcentlogo" />
+
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#293e57" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/cityName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/solis_black"
+                        android:text="------"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="#DCDCDC"
+                        android:textSize="29sp" />
+
+                    <TextView
+                        android:id="@+id/weatherState"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/solis_bold"
+                        android:text="-----"
+                        android:textAlignment="center"
+                        android:textColor="#DCDCDC"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginBottom="2dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/weatherStateImg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="10dp"
+                            android:adjustViewBounds="true"/>
+
+                        <TextView
+                            android:id="@+id/temp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/solis_regular"
+                            android:text="--°"
+                            android:textAlignment="center"
+                            android:textColor="#DCDCDC"
+                            android:textSize="87sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-22dp"
+                            android:layout_marginTop="23dp"
+                            android:fontFamily="@font/solis_regular"
+                            android:text="C"
+                            android:textAlignment="center"
+                            android:textColor="#9A9A9A"
+                            android:textSize="30sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/min"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/solis_regular"
+                            android:gravity="end"
+                            android:text="Min. --°"
+                            android:textColor="#DCDCDC"
+                            android:textSize="17sp" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="2dp"
+                            android:background="#DCDCDC"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"/>
+
+                        <TextView
+                            android:id="@+id/max"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/solis_regular"
+                            android:text="Maks. --°"
+                            android:textColor="#DCDCDC"
+                            android:textSize="17sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/solis_bold"
+                                android:text="GÜN DOĞUŞ"
+                                android:textAlignment="center"
+                                android:textColor="#5479A5"
+                                android:textSize="13sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/sunRise"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/solis_regular"
+                                    android:text="--:--"
+                                    android:textAlignment="center"
+                                    android:textColor="#DCDCDC"
+                                    android:textSize="30sp" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_sunrise" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#293e57" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/solis_bold"
+                                android:text="GÜN BATIŞ"
+                                android:textAlignment="center"
+                                android:textColor="#5479A5"
+                                android:textSize="13sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/sunSet"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/solis_regular"
+                                    android:text="--:--"
+                                    android:textAlignment="center"
+                                    android:textColor="#DCDCDC"
+                                    android:textSize="30sp" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_sunset" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/solis_bold"
+                                android:text="GÖRÜŞ UZAKLIĞI"
+                                android:textAlignment="center"
+                                android:textColor="#5479A5"
+                                android:textSize="13sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/visibility"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/solis_regular"
+                                    android:text="--"
+                                    android:textAlignment="center"
+                                    android:textColor="#DCDCDC"
+                                    android:textSize="30sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="3dp"
+                                    android:fontFamily="@font/solis_medium"
+                                    android:text=" km"
+                                    android:textAlignment="center"
+                                    android:textColor="#DCDCDC"
+                                    android:textSize="20sp" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_visibility" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#293e57" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/solis_bold"
+                                android:text="TAHMİN ORANI"
+                                android:textAlignment="center"
+                                android:textColor="#5479A5"
+                                android:textSize="13sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="16dp"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="3dp"
+                                    android:fontFamily="@font/solis_bold"
+                                    android:text="%"
+                                    android:textAlignment="center"
+                                    android:textColor="#DCDCDC"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/predict"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/solis_regular"
+                                    android:text="--"
+                                    android:textAlignment="center"
+                                    android:textColor="#DCDCDC"
+                                    android:textSize="30sp" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_thinking" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/solis_bold"
+                                android:text="NEM"
+                                android:textAlignment="center"
+                                android:textColor="#5479A5"
+                                android:textSize="13sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="16dp"
+                                android:gravity="bottom|center_horizontal">
+
+                                <FrameLayout
+                                    android:layout_width="115dp"
+                                    android:layout_height="115dp">
+
+                                    <com.timqi.sectorprogressview.ColorfulRingProgressView
+                                        android:id="@+id/humidityProgress"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        app:bgColor="#5E5555"
+                                        app:fgColorEnd="#5B86E5"
+                                        app:fgColorStart="#36D1DC"
+                                        app:percent="0"
+                                        app:startAngle="0"
+                                        app:strokeWidth="8dp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="3dp"
+                                            android:adjustViewBounds="true"
+                                            android:src="@drawable/ic_humidity" />
+
+                                        <TextView
+                                            android:id="@+id/humidity"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="bottom|center"
+                                            android:fontFamily="@font/gilroy_extrabold"
+                                            android:text="%---"
+                                            android:textColor="@android:color/white"
+                                            android:textSize="18sp" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#293e57" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:fontFamily="@font/solis_bold"
+                                android:text="RÜZGAR YÖNÜ"
+                                android:textAlignment="center"
+                                android:textColor="#5479A5"
+                                android:textSize="13sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="16dp"
+                                android:gravity="bottom|center_horizontal">
+
+                                <FrameLayout
+                                    android:layout_width="115dp"
+                                    android:layout_height="115dp">
+
+                                    <com.timqi.sectorprogressview.ColorfulRingProgressView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        app:bgColor="#5E5555"
+                                        app:fgColorEnd="#0575E6"
+                                        app:fgColorStart="#0CB89F"
+                                        app:percent="100"
+                                        app:startAngle="0"
+                                        app:strokeWidth="8dp" />
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <ImageView
+                                            android:id="@+id/windArrow"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerInParent="true"
+                                            android:adjustViewBounds="true"
+                                            android:src="@drawable/ic_navigation" />
+
+                                        <TextView
+                                            android:id="@+id/windDirection"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_centerHorizontal="true"
+                                            android:layout_gravity="bottom"
+                                            android:layout_marginBottom="15dp"
+                                            android:fontFamily="@font/gilroy_black"
+                                            android:text="---"
+                                            android:textColor="@android:color/white"
+                                            android:textSize="9sp" />
+
+                                    </RelativeLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <com.github.ahmadnemati.wind.WindView
+                        android:id="@+id/windView"
+                        android:layout_width="match_parent"
+                        android:layout_height="106dp"
+                        android:layout_marginTop="20dp"
+                        app:barometerTickSpacing="9dp"
+                        app:bigPoleX="38dp"
+                        app:labelFontSize="12sp"
+                        app:numericFontSize="25sp"
+                        app:poleBottomY="98dp"
+                        app:pressureLineY="73dp"
+                        app:pressureTextX="12dp"
+                        app:pressureTextY="4dp"
+                        app:smallPoleX="75dp"
+                        app:windTextX="10dp"
+                        app:windTextY="29dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/solis_bold"
+                    android:text="HAFTALIK"
+                    android:textAlignment="center"
+                    android:textColor="#5479A5"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="275dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="30dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/nextDayRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</RelativeLayout>

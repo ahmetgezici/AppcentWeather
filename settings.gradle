@@ -1,0 +1,2 @@
+include ':app',':windview'
+rootProject.name = "Appcent Weather"

@@ -1,0 +1,121 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="-5dp"
+    android:layout_marginEnd="-5dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/ic_empty"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="8dp"
+    app:cardUseCompatPadding="true">
+
+    <FrameLayout
+        android:id="@+id/progressLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0E3053"
+        android:translationZ="10dp">
+
+        <com.ldoublem.loadingviewlib.view.LVCircularRing
+            android:id="@+id/progress"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0E3053"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nextDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/solis_bold"
+            android:text="----"
+            android:textAlignment="center"
+            android:textColor="#DCDCDC"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/nextStateImg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                android:adjustViewBounds="true" />
+
+            <TextView
+                android:id="@+id/nextTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="2dp"
+                android:fontFamily="@font/solis_regular"
+                android:text="--"
+                android:textAlignment="center"
+                android:textColor="#DCDCDC"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:gravity="top"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="143dp"
+                android:gravity="bottom|center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nextMax"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/solis_regular"
+                    android:text=" --°"
+                    android:textAlignment="center"
+                    android:textColor="#DCDCDC"
+                    android:textSize="17sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/nextMinMax"
+                    android:layout_width="7dp"
+                    android:layout_height="60dp"
+                    app:cardBackgroundColor="#DCDCDC"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="8dp" />
+
+                <TextView
+                    android:id="@+id/nextMin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/solis_regular"
+                    android:text=" --°"
+                    android:textAlignment="center"
+                    android:textColor="#DCDCDC"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
