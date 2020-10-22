@@ -1,15 +1,12 @@
 package com.ahmetgezici.appcentweather.View;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +17,11 @@ import com.ahmetgezici.appcentweather.Network.ApiClient;
 import com.ahmetgezici.appcentweather.Network.ApiInterface;
 import com.ahmetgezici.appcentweather.R;
 import com.ahmetgezici.appcentweather.databinding.ActivityCitySearchBinding;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,7 +39,6 @@ public class CitySearchActivity extends AppCompatActivity {
     String TAG = "aaa";
 
     ApiInterface apiInterface;
-    LocationListener locationListener;
 
     ActivityCitySearchBinding viewBinding;
 
@@ -61,17 +62,24 @@ public class CitySearchActivity extends AppCompatActivity {
         setupList(gradientList);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            final LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            locationListener = new LocationListener() {
+
+            FusedLocationProviderClient locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+            LocationRequest locationRequest = LocationRequest.create();
+            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+            LocationCallback locationCallback = new LocationCallback() {
                 @Override
-                public void onLocationChanged(@NonNull Location location) {
+                public void onLocationResult(LocationResult locationResult) {
+                    Location location = locationResult.getLocations().get(0);
 
                     double longitude = location.getLongitude();
                     double latitude = location.getLatitude();
 
                     Log.e(TAG, decimalFormat.format(latitude) + "," + decimalFormat.format(longitude));
 
-                    lm.removeUpdates(this);
+                    locationProviderClient.removeLocationUpdates(this);
+
 
                     apiInterface = ApiClient.getRetrofit().create(ApiInterface.class);
 
@@ -100,15 +108,12 @@ public class CitySearchActivity extends AppCompatActivity {
                         }
                     });
                 }
-
-                @Override
-                public void onStatusChanged(String provider, int status, Bundle extras) {
-                }
             };
 
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+            locationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
         }
     }
+
 
     void setupList(ArrayList<Integer> gradientList) {
         gradientList.add(R.drawable.gradient1);
