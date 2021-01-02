@@ -1,4 +1,4 @@
-package com.ahmetgezici.appcentweather.Adapter;
+package com.ahmetgezici.appcentweather.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,9 +14,9 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ahmetgezici.appcentweather.Model.LocationSearch;
 import com.ahmetgezici.appcentweather.R;
-import com.ahmetgezici.appcentweather.View.MainActivity;
+import com.ahmetgezici.appcentweather.model.LocationSearch;
+import com.ahmetgezici.appcentweather.view.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;

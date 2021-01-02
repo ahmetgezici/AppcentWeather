@@ -1,4 +1,4 @@
-package com.ahmetgezici.appcentweather.Adapter;
+package com.ahmetgezici.appcentweather.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,10 +17,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ahmetgezici.appcentweather.Model.ConsolidatedWeather;
-import com.ahmetgezici.appcentweather.Network.ApiClient;
-import com.ahmetgezici.appcentweather.Network.ApiInterface;
 import com.ahmetgezici.appcentweather.R;
+import com.ahmetgezici.appcentweather.model.ConsolidatedWeather;
+import com.ahmetgezici.appcentweather.network.ApiClient;
+import com.ahmetgezici.appcentweather.network.ApiInterface;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ldoublem.loadingviewlib.view.LVCircularRing;

@@ -19,7 +19,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <activity
-            android:name=".View.PermissionActivity"
+            android:name=".view.PermissionActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,22 +28,24 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".View.CitySearchActivity"
+        <activity
+            android:name=".view.CitySearchActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".View.MainActivity"
+        <activity
+            android:name=".view.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
 
-        <receiver android:name=".View.Weather1Widget">
+        <receiver android:name=".view.widget.Weather1Widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -53,14 +55,14 @@
                 android:resource="@xml/weather1widget_info" />
         </receiver>
 
-        <activity android:name=".View.Widget1ConfigActivity">
+        <activity android:name=".view.widget.Widget1ConfigActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
 
-        <receiver android:name=".View.Weather2Widget">
+        <receiver android:name=".view.widget.Weather2Widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -70,7 +72,7 @@
                 android:resource="@xml/weather2_widget_info" />
         </receiver>
 
-        <activity android:name=".View.Widget2ConfigActivity">
+        <activity android:name=".view.widget.Widget2ConfigActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>

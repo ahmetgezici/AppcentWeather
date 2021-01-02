@@ -1,10 +1,10 @@
-package com.ahmetgezici.appcentweather.Network;
+package com.ahmetgezici.appcentweather.network;
 
-import com.ahmetgezici.appcentweather.Model.City;
-import com.ahmetgezici.appcentweather.Model.ConsolidatedWeather;
-import com.ahmetgezici.appcentweather.Model.LocationSearch;
-import com.ahmetgezici.appcentweather.Model.MinMax;
-import com.ahmetgezici.appcentweather.Model.WeatherResponse;
+import com.ahmetgezici.appcentweather.model.City;
+import com.ahmetgezici.appcentweather.model.ConsolidatedWeather;
+import com.ahmetgezici.appcentweather.model.LocationSearch;
+import com.ahmetgezici.appcentweather.model.MinMax;
+import com.ahmetgezici.appcentweather.model.WeatherResponse;
 
 import java.util.List;
 

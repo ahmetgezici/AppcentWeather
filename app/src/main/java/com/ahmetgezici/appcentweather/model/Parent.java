@@ -1,24 +1,27 @@
-package com.ahmetgezici.appcentweather.Model;
+package com.ahmetgezici.appcentweather.model;
+
+import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LocationSearch {
+public class Parent {
 
-    @SerializedName("distance")
-    @Expose
-    public Integer distance;
     @SerializedName("title")
     @Expose
+    @Nullable
     public String title;
     @SerializedName("location_type")
     @Expose
+    @Nullable
     public String locationType;
     @SerializedName("woeid")
     @Expose
-    public String woeid;
+    @Nullable
+    public Integer woeid;
     @SerializedName("latt_long")
     @Expose
+    @Nullable
     public String lattLong;
 
 }

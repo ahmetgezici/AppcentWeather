@@ -1,4 +1,4 @@
-package com.ahmetgezici.appcentweather.View;
+package com.ahmetgezici.appcentweather.view;
 
 import android.Manifest;
 import android.content.Context;
@@ -23,7 +23,7 @@ public class PermissionActivity extends AppCompatActivity {
     int REQUESTCODE = 1;
     boolean locationStatus = false;
 
-    ActivityPermissionBinding viewBinding;
+    ActivityPermissionBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +37,19 @@ public class PermissionActivity extends AppCompatActivity {
             finish();
         }
 
-        viewBinding = ActivityPermissionBinding.inflate(getLayoutInflater());
-        setContentView(viewBinding.getRoot());
+        binding = ActivityPermissionBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         ///////////////////////////////////////////////////////
 
-        viewBinding.locSetting.setOnClickListener(new View.OnClickListener() {
+        binding.locSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
             }
         });
 
-        viewBinding.complete.setOnClickListener(new View.OnClickListener() {
+        binding.complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(PermissionActivity.this, CitySearchActivity.class));
@@ -57,7 +57,7 @@ public class PermissionActivity extends AppCompatActivity {
             }
         });
 
-        viewBinding.locPermission.setOnClickListener(new View.OnClickListener() {
+        binding.locPermission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -79,19 +79,19 @@ public class PermissionActivity extends AppCompatActivity {
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            viewBinding.gpsSwitch.setChecked(true);
-            viewBinding.gpsState.setText("Açık");
-            viewBinding.locSetting.setVisibility(View.INVISIBLE);
+            binding.gpsSwitch.setChecked(true);
+            binding.gpsState.setText("Açık");
+            binding.locSetting.setVisibility(View.INVISIBLE);
             locationStatus = true;
         } else {
-            viewBinding.gpsSwitch.setChecked(false);
-            viewBinding.gpsState.setText("Kapalı");
-            viewBinding.locSetting.setVisibility(View.VISIBLE);
+            binding.gpsSwitch.setChecked(false);
+            binding.gpsState.setText("Kapalı");
+            binding.locSetting.setVisibility(View.VISIBLE);
             locationStatus = false;
         }
 
         if (isLocationPermCheck() && locationStatus) {
-            viewBinding.complete.setEnabled(true);
+            binding.complete.setEnabled(true);
         }
 
     }
@@ -110,11 +110,11 @@ public class PermissionActivity extends AppCompatActivity {
                 if (ActivityCompat.checkSelfPermission(PermissionActivity.this,
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(this, "İzin Verildi", Toast.LENGTH_SHORT).show();
-                    viewBinding.locPermission.setText("İZİN VERİLDİ");
+                    binding.locPermission.setText("İZİN VERİLDİ");
                 }
             } else {
                 Toast.makeText(this, "İzin Verilmedi", Toast.LENGTH_SHORT).show();
-                viewBinding.locPermission.setText("İZİN VER");
+                binding.locPermission.setText("İZİN VER");
             }
         }
     }

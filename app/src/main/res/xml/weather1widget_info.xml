@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:configure="com.ahmetgezici.appcentweather.View.Widget1ConfigActivity"
+    android:configure="com.ahmetgezici.appcentweather.view.widget.Widget1ConfigActivity"
     android:initialKeyguardLayout="@layout/weather1_widget"
     android:initialLayout="@layout/weather1_widget"
     android:minWidth="165dp"

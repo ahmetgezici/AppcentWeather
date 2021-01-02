@@ -1,4 +1,4 @@
-package com.ahmetgezici.appcentweather.View;
+package com.ahmetgezici.appcentweather.view.widget;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -13,10 +13,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ahmetgezici.appcentweather.Model.City;
-import com.ahmetgezici.appcentweather.Network.ApiClient;
-import com.ahmetgezici.appcentweather.Network.ApiInterface;
 import com.ahmetgezici.appcentweather.R;
+import com.ahmetgezici.appcentweather.model.City;
+import com.ahmetgezici.appcentweather.network.ApiClient;
+import com.ahmetgezici.appcentweather.network.ApiInterface;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 

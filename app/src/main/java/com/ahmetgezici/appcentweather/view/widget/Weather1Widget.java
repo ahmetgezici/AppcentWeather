@@ -1,4 +1,4 @@
-package com.ahmetgezici.appcentweather.View;
+package com.ahmetgezici.appcentweather.view.widget;
 
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
@@ -10,11 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
-import com.ahmetgezici.appcentweather.Model.ConsolidatedWeather;
-import com.ahmetgezici.appcentweather.Model.WeatherResponse;
-import com.ahmetgezici.appcentweather.Network.ApiClient;
-import com.ahmetgezici.appcentweather.Network.ApiInterface;
 import com.ahmetgezici.appcentweather.R;
+import com.ahmetgezici.appcentweather.model.ConsolidatedWeather;
+import com.ahmetgezici.appcentweather.model.WeatherResponse;
+import com.ahmetgezici.appcentweather.network.ApiClient;
+import com.ahmetgezici.appcentweather.network.ApiInterface;
+import com.ahmetgezici.appcentweather.view.MainActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.AppWidgetTarget;
 
