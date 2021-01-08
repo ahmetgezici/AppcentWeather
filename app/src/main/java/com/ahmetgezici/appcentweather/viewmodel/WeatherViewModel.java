@@ -17,11 +17,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class MainViewModel extends ViewModel {
+public class WeatherViewModel extends ViewModel {
 
     MainRepository repository;
 
-    public MainViewModel() {
+    public WeatherViewModel() {
         setupNextDates();
         repository = new MainRepository();
     }

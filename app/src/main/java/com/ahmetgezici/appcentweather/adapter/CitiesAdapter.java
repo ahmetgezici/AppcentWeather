@@ -2,7 +2,6 @@ package com.ahmetgezici.appcentweather.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ahmetgezici.appcentweather.R;
 import com.ahmetgezici.appcentweather.model.LocationSearch;
-import com.ahmetgezici.appcentweather.view.MainActivity;
+import com.ahmetgezici.appcentweather.view.WeatherFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +25,13 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
 
     List<LocationSearch> locationSearch;
     ArrayList<Integer> gradientList;
+    FragmentManager manager;
     Context context;
 
-    public CitiesAdapter(List<LocationSearch> locationSearch, ArrayList<Integer> gradientList, Context context) {
+    public CitiesAdapter(List<LocationSearch> locationSearch, ArrayList<Integer> gradientList, FragmentManager manager, Context context) {
         this.locationSearch = locationSearch;
         this.gradientList = gradientList;
+        this.manager = manager;
         this.context = context;
     }
 
@@ -50,10 +52,13 @@ public class CitiesAdapter extends RecyclerView.Adapter<CitiesAdapter.ViewHolder
         holder.city.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra("woeid", locationSearch.get(position).woeid);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+
+                WeatherFragment weatherFragment = WeatherFragment.newInstance(locationSearch.get(position).woeid);
+
+                manager.beginTransaction()
+                        .setCustomAnimations(R.anim.fadein, R.anim.fadeout)
+                        .replace(R.id.fragmentLayout, weatherFragment, weatherFragment.getTag())
+                        .commit();
             }
         });
 

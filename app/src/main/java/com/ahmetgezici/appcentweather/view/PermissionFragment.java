@@ -1,44 +1,65 @@
 package com.ahmetgezici.appcentweather.view;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-import com.ahmetgezici.appcentweather.databinding.ActivityPermissionBinding;
+import com.ahmetgezici.appcentweather.R;
+import com.ahmetgezici.appcentweather.databinding.FragmentPermissionBinding;
+import com.ahmetgezici.appcentweather.viewmodel.PermissionViewModel;
 
-public class PermissionActivity extends AppCompatActivity {
+import org.jetbrains.annotations.NotNull;
+
+public class PermissionFragment extends Fragment {
 
     String TAG = "aaa";
 
     int REQUESTCODE = 1;
     boolean locationStatus = false;
 
-    ActivityPermissionBinding binding;
+    FragmentPermissionBinding binding;
+
+    private PermissionViewModel mViewModel;
+
+    CitySearchFragment citySearchFragment = new CitySearchFragment();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+    @Override
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        FragmentManager manager = getFragmentManager();
+
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         locationStatus = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         if (isLocationPermCheck() && locationStatus) {
-            startActivity(new Intent(PermissionActivity.this, CitySearchActivity.class));
-            finish();
+            manager.beginTransaction()
+                    .setCustomAnimations(R.anim.fadein, R.anim.fadeout)
+                    .replace(R.id.fragmentLayout, citySearchFragment, citySearchFragment.getTag())
+                    .commit();
         }
 
-        binding = ActivityPermissionBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        binding = FragmentPermissionBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
         ///////////////////////////////////////////////////////
 
@@ -52,8 +73,11 @@ public class PermissionActivity extends AppCompatActivity {
         binding.complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PermissionActivity.this, CitySearchActivity.class));
-                finish();
+
+                manager.beginTransaction()
+                        .setCustomAnimations(R.anim.fadein, R.anim.fadeout)
+                        .replace(R.id.fragmentLayout, citySearchFragment, citySearchFragment.getTag())
+                        .commit();
             }
         });
 
@@ -63,21 +87,24 @@ public class PermissionActivity extends AppCompatActivity {
 
                 if (!isLocationPermCheck()) {
 
-                    ActivityCompat.requestPermissions(PermissionActivity.this,
+                    ActivityCompat.requestPermissions(getActivity(),
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUESTCODE);
 
                 } else {
-                    Toast.makeText(PermissionActivity.this, "İzin zaten verilmiş", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "İzin zaten verilmiş", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        return view;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
 
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             binding.gpsSwitch.setChecked(true);
             binding.gpsState.setText("Açık");
@@ -97,23 +124,24 @@ public class PermissionActivity extends AppCompatActivity {
     }
 
     public boolean isLocationPermCheck() {
-        return ActivityCompat.checkSelfPermission(PermissionActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        return ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == REQUESTCODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.checkSelfPermission(PermissionActivity.this,
+                if (ActivityCompat.checkSelfPermission(getContext(),
                         Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "İzin Verildi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "İzin Verildi", Toast.LENGTH_SHORT).show();
                     binding.locPermission.setText("İZİN VERİLDİ");
                 }
             } else {
-                Toast.makeText(this, "İzin Verilmedi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "İzin Verilmedi", Toast.LENGTH_SHORT).show();
                 binding.locPermission.setText("İZİN VER");
             }
         }

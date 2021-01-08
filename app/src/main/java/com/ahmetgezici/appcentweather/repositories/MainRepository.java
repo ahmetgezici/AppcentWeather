@@ -39,7 +39,6 @@ public class MainRepository {
             public void onResponse(@NotNull Call<WeatherResponse> call, @NotNull Response<WeatherResponse> response) {
                 if (response.code() == 200) {
 
-                    Log.e(TAG, "onResponse: " + response.body());
                     WeatherResponse weatherResponse = response.body();
                     mutableLiveData.setValue(weatherResponse);
 

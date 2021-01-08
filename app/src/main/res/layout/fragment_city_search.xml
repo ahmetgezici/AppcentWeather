@@ -40,7 +40,7 @@
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_location"
-                    android:layout_marginEnd="3dp"/>
+                    android:layout_marginEnd="3dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
